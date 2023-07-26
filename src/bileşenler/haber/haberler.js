@@ -90,6 +90,59 @@ const data = [
   },
 ];
 
+const haberYapici = function (title, date, p1, p2, p3) {
+  const divArticle = document.createElement("div");
+  divArticle.className = "article";
+
+  const hHaber = document.createElement("h2");
+  hHaber.textContent = title;
+
+  const pTarih = document.createElement("p");
+  pTarih.className = "tarih";
+  pTarih.textContent = date;
+
+  const par1 = document.createElement("p");
+  par1.textContent = p1;
+
+  const par2 = document.createElement("p");
+  par2.textContent = p2;
+
+  const par3 = document.createElement("p");
+  par3.textContent = p3;
+
+  const btn1 = document.createElement("button");
+  btn1.textContent = "+";
+  btn1.className = "expandButton";
+
+  btn1.addEventListener("click", (event) => {
+    console.log("Butona tıklandı", event);
+    alert("Butona tıklandı", event);
+  });
+
+  divArticle.append(hHaber);
+  divArticle.append(pTarih);
+  divArticle.append(par1);
+  divArticle.append(par2);
+  divArticle.append(par3);
+  divArticle.append(btn1);
+
+  return divArticle;
+};
+
+const bizimDiv = document.querySelector(".articles");
+
+data.forEach((oneNews) => {
+  const haberHaber = haberYapici(
+    oneNews.baslik,
+    oneNews.tarih,
+    oneNews.ilkParagraf,
+    oneNews.ikinciParagraf,
+    oneNews.ucuncuParagraf
+  );
+
+  bizimDiv.append(haberHaber);
+});
+
 /*
   Adım 1: Haber oluşturmak için 'haberYapici' adında bir bileşen(component) oluşturun.
   Bileşeniniz, argümanı haberleri içeren dizi olarak alan bir fonksiyon olacak,
