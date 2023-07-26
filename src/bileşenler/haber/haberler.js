@@ -114,9 +114,12 @@ const haberYapici = function (title, date, p1, p2, p3) {
   btn1.textContent = "+";
   btn1.className = "expandButton";
 
+  //   Adım 2: Hala `haberYapici` içindeyiz, button.expandButton 'a bir click event dinleyici ekleyin.
+  // Bu dinleyici div.article öğesine 'article-open' class'ını ekleyip/çıkaracak (toogle).
+
   btn1.addEventListener("click", (event) => {
-    console.log("Butona tıklandı", event);
-    alert("Butona tıklandı", event);
+    console.log("Butona tıklandı");
+    btn1.classList.toggle("article-open");
   });
 
   divArticle.append(hHaber);
