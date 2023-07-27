@@ -10,24 +10,27 @@ let menuElemanlari = [
   "Diğer",
 ];
 
-const menuYapici = function (elemanlar) {
+const menuYapici = function () {
   const tekDiv = document.createElement("div");
   tekDiv.className = "menu";
 
   const tekUl = document.createElement("ul");
   tekDiv.append(tekUl);
 
-  const tekLi = document.createElement("li");
-  tekLi.textContent = elemanlar;
-  tekDiv.append(tekLi);
+  menuElemanlari.forEach((eleman) => {
+    const tekLi = document.createElement("li");
+    tekLi.textContent = eleman;
+    tekUl.appendChild(tekLi);
+  });
+
+  const menuButton = document.querySelector(".menu-button");
+  menuButton.addEventListener("click", (event) => {
+    console.log("menu butonuna tıklandı.");
+    tekDiv.classList.toggle("menu--open");
+  });
 
   return tekDiv;
 };
-
-const menuButton = document.querySelector(".menu-button");
-menuButton.addEventListener("click", (event) => {
-  console.log("menu butonuna tıklandı.");
-});
 
 const headHead = document.querySelector(".header");
 const menum = menuYapici(menuElemanlari);
